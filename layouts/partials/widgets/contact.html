@@ -24,6 +24,17 @@
       {{ $post_action = printf "action=\"https://formspree.io/%s\"" $data.email }}
     {{end}}
 
+    {{ if $data.email }}
+    <ul class="fa-ul">
+      <li>
+        <i class="fa-li fas fa-envelope fa-2x" aria-hidden="true"></i>
+        <span id="person-email">
+        {{- if $autolink }}<a href="mailto:{{ $data.email }}">{{ $data.email }}</a>{{ else }}{{ $data.email }}{{ end -}}
+        </span>
+      </li>
+    </ul>
+    {{ end }}
+
     <div class="mb-3">
       <form name="contact" method="POST" {{ $post_action | safeHTMLAttr }}>
         <div class="form-group form-inline">
